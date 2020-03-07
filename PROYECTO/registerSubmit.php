@@ -62,8 +62,7 @@ else {
         } 
         else {
             $_SESSION["userInDB"] = true;
-            echo "Error: " . $sql . "<br>" . $conn->error;
-            //header("Location: /register.php");
+            header("Location: /register.php");
         }
     
     $conn->close();
