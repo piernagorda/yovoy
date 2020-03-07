@@ -6,17 +6,19 @@ $username = $_REQUEST["username"];
 $passwd = $_REQUEST["passwd"];
 $loginUsername="";
 $loginPasswd="";
+$name = "";
 
 include "mySQLConnection.php";
 
 //OBTENEMOS USUARIO Y CONTRASEÑA DESDE LA BASE DE DATOS
-$loginUser = "SELECT username, password FROM user WHERE username =" ."'".$username."'";
+$loginUser = "SELECT username, password, name FROM user WHERE username =" ."'".$username."'";
 $result = $conn->query($loginUser);
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         $loginUsername = $row["username"];
         $loginPasswd = $row["password"];
+        $name = $row["name"];
     }
 } 
 
@@ -49,7 +51,7 @@ else if($username == $loginUsername && $passwd == $loginPasswd){
     $_SESSION["login"] = true;
     $_SESSION["userInDB"] = true;
     $_SESSION["correctPass"] = true;
-    $_SESSION["username"] = $loginUsername;
+    $_SESSION["name"] = $name;
     header("Location: /index.php");
 }
 ?>
