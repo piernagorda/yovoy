@@ -34,7 +34,7 @@ else {
         $_SESSION["noBlanks"] = true;
         $_SESSION["login"] = true;
         $_SESSION["newUser"] = true;
-        $_SESSION["username"] = $username;
+        $_SESSION["name"] = $name;
 
         $getUserID = "SELECT COUNT(user_id) AS num FROM user";
         $result = $conn->query($getUserID);
