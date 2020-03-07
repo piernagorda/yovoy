@@ -36,8 +36,8 @@ else {
         $_SESSION["newUser"] = true;
         $_SESSION["username"] = $username;
 
-        $loginUser = "SELECT COUNT(user_id) AS num FROM user";
-        $result = $conn->query($loginUser);
+        $getUserID = "SELECT COUNT(user_id) AS num FROM user";
+        $result = $conn->query($getUserID);
 
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
