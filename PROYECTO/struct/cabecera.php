@@ -4,31 +4,16 @@
     <div id="cabecera">   
         <h1>ESTO ES UNA PRUEBA</h1>
 		
-		<div id="logo">
-		</div>
-		
-		<div id="feedLink">
-			<a href='feed.php'>FEED</a>
-		</div>
-		
-		<div id="eventosLink">
-			<a href='eventos.php'>EVENTOS</a>
-		</div>
-		
-		<div id="buscarLink">
-			<a href='buscar.php'>BUSCAR</a>
-		</div>
-		
-		<div id="calendarioLink">
-			<a href='calendario.php'>CALENDARIO</a>
-		</div>
-		
-		<div id="amigosLink">
-			<a href='amigos.php'>MIS AMIGOS</a>
-		</div>
-		
-		<div id="areaLink">
-			<a href='area.php'>MI ÁREA</a>
+		<div id="navbar">
+			<ul>
+				<!--logo aquí-->
+				<li><a href='feed.php'>FEED</a></li>
+				<li><a href='eventos.php'>EVENTOS</a></li>
+				<li><a href='buscar.php'>BUSCAR</a></li>
+				<li><a href='calendario.php'>CALENDARIO</a></li>
+				<li><a href='amigos.php'>MIS AMIGOS</a></li>
+				<li><a href='area.php'>MI ÁREA</a></li>
+			</ul>
 		</div>
 		
 		<div id="usuario">
@@ -40,6 +25,7 @@
 					echo "</ul>";
 				}
 				else{
+					//foto si hay
 					if($_SESSION["login"]){
 						echo "<p>Hola, " . $_SESSION["username"]. "!</p>";
 						echo "<a href='logout.php'>Cerrar sesión</a>";
