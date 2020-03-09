@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Proyecto",
+    "\\Proyecto\\includes",
+    "\\Proyecto\\includes\\comun"
   ],
+  "SelectedNode": "\\Proyecto\\includes\\comun\\cabecera.php",
   "PreviewInSolutionExplorer": false
 }
