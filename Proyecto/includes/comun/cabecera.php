@@ -8,12 +8,12 @@
 			<ul>
 				<!--logo aquí-->
 				<li><img src="includes/img/logoBlanco.png" alt="logo" height="100"/></li>
-				<li><a href='/PROYECTO/inicio.php'>INICIO</a></li>
-				<li><a href='/PROYECTO/eventos.php'>EVENTOS</a></li>
-				<li><a href='/PROYECTO/buscar.php'>BUSCAR</a></li>
-				<li><a href='/PROYECTO/calendario.php'>CALENDARIO</a></li>
-				<li><a href='/PROYECTO/amigos.php'>MIS AMIGOS</a></li>
-				<li><a href='/PROYECTO/area.php'>MI ÁREA</a></li>
+				<li><a href='inicio.php'>INICIO</a></li>
+				<li><a href='eventos.php'>EVENTOS</a></li>
+				<li><a href='buscar.php'>BUSCAR</a></li>
+				<li><a href='calendario.php'>CALENDARIO</a></li>
+				<li><a href='amigos.php'>MIS AMIGOS</a></li>
+				<li><a href='area.php'>MI ÁREA</a></li>
 			</ul>
 		</div>
 		
