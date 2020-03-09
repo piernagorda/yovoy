@@ -2,10 +2,19 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+    <meta charset="utf-8">
+    <title>YoVoY</title>
+    <script>
+        function redirect(){
+            window.location.href = "inicio.php";
+        }
+    </script>
 </head>
 <body>
-    <p>sample</p>
+    <img src="includes/img/indexPic.jpg" alt="photo">
+    <!--<form action="inicio.php" method="POST">
+        <button>ENTRAR</button>
+    </form>-->
+    <input type="button" value="Entrar" onclick="redirect();" />
 </body>
 </html>
