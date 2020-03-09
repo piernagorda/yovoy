@@ -7,7 +7,7 @@
 		<div id="navbar">
 			<ul>
 				<!--logo aquí-->
-				<li><img src="includes/img/logoBlanco.png" alt="logo" height="100"/></li>
+				<li><img src="includes/img/logo.png" alt="logo" height="100"/></li>
 				<li><a href='inicio.php'>INICIO</a></li>
 				<li><a href='eventos.php'>EVENTOS</a></li>
 				<li><a href='buscar.php'>BUSCAR</a></li>
