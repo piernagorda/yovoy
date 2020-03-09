@@ -27,7 +27,7 @@ else {
     $_SESSION["login"] = false;
     $_SESSION["userInDB"] = false;
    
-   // header("Location: /login.php");
+    header("Location: /login.php");
 }
 $conn->close();
 
@@ -35,7 +35,7 @@ $conn->close();
 if($username == "" || $passwd == ""){
     $_SESSION["login"] = false;
     $_SESSION["userInDB"] = false;
-   // header("Location: /login.php");
+    header("Location: /login.php");
 }
 
 //ERROR CUANDO EXISTE EL USUARIO Y LA CONTRASEÑA ES INCORRECTA
@@ -43,7 +43,7 @@ else if($username == $loginUsername && $passwd != $loginPasswd){
     $_SESSION["login"]= false;
     $_SESSION["userInDB"] = true;
     $_SESSION["correctPass"] = false;
-  //  header("Location: /login.php");
+    header("Location: /login.php");
 }
 
 //ACCESO CUANDO EL USUARIO EXISTE Y LA CONTRASEÑA ES CORRECTA
@@ -52,7 +52,6 @@ else if($username == $loginUsername && $passwd == $loginPasswd){
     $_SESSION["userInDB"] = true;
     $_SESSION["correctPass"] = true;
     $_SESSION["name"] = $name;
-   // header("Location: /index.php");
+    header("Location: /index.php");
 }
 ?>
-
