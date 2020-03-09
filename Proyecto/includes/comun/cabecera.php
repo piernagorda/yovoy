@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="UTF-8">
+	</head>
+
     <body>
     <div id="cabecera">   
         <h1>ESTO ES UNA PRUEBA</h1>
