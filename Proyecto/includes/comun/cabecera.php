@@ -27,7 +27,7 @@
 				else{
 					//foto si hay
 					if($_SESSION["login"]){
-						echo "<p>Hola, " . $_SESSION["username"]. "!</p>";
+						echo "<p>Hola, " . $_SESSION["name"]. "!</p>";
 						echo "<a href='logout.php'>Cerrar sesión</a>";
 
 						if(isset($_SESSION["newUser"])){

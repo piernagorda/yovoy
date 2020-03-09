@@ -23,7 +23,7 @@ else if($passwd != $passwdConfirm){
     $_SESSION["noBlanks"] = true;
     $_SESSION["login"] = false;
     $_SESSION["newUser"] = false;
-    header("Location: /register.php");
+    header("Location: ./register.php");
 }
 
 else {
@@ -58,11 +58,11 @@ else {
             ."'".$type."'". ");";
 
         if ($conn->query($registerUser) === true) {
-            header("Location: /index.php");
+            header("Location: ./index.php");
         } 
         else {
             $_SESSION["userInDB"] = true;
-            header("Location: /register.php");
+            header("Location: ./register.php");
         }
     
     $conn->close();

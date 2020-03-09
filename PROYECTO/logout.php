@@ -13,7 +13,7 @@
 
 <body>
     <header>
-        <?php include 'struct/cabecera.php';?>
+        <?php include 'includes/comun/cabecera.php';?>
     </header>
 
     <div>
