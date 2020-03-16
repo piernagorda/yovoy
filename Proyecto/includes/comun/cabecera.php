@@ -2,8 +2,6 @@
 <html>
     <body>
     <div id="cabecera">   
-        <h1>ESTO ES UNA PRUEBA</h1>
-		
 		<div id="navbar">
 			<ul>
 				<!--logo aquí-->
