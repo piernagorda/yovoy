@@ -1,25 +1,30 @@
 <?php
+include_once('MySQLConnection.php');
+include_once('UserDAO.php');
+
 session_start();
 
+//Valores introduciodos por el usuario
 $username = $_REQUEST["username"];
-$passwd = $_REQUEST["passwd"];
-$passwdConfirm = $_REQUEST["passwdConfirm"];
+$password = $_REQUEST["password"];
+$passwordConfirm = $_REQUEST["passwordConfirm"];
 $name = $_REQUEST["name"];
 $img = $_REQUEST["img"];
 
+//Valores por defecto
 $creationDate = date("Y-m-d");
 $imgPath = NULL;
 $isPremium = 0;
 $type = 0;
 
 //ASEGURAMOS QUE NO DEJAMOS HUECOS EN EL FORMULARIO
-if($username == "" || $passwd == ""  || $passwdConfirm == "" || $name == ""){
+if($username == "" || $password == ""  || $passwordConfirm == "" || $name == ""){
     $_SESSION["noBlanks"] = false;
     header("Location: /register.php");
 }
 
 //ASEGURAMOS QUE LAS CONTRASEÑAS SEAN IGUALES
-else if($passwd != $passwdConfirm){
+else if($password != $passwordConfirm){
     $_SESSION["validPass"] = false;
     $_SESSION["noBlanks"] = true;
     $_SESSION["login"] = false;
@@ -27,51 +32,28 @@ else if($passwd != $passwdConfirm){
     header("Location: /register.php");
 }
 
-else {
+else { //INICIAMOS CONEXIÓN CON MYSQL
 
-    include 'mySQLConnection.php';
+    $mysql = new MySQLConnection();
+    $conn = $mysql->connect();
 
-        $_SESSION["validPass"] = true;
-        $_SESSION["noBlanks"] = true;
-        $_SESSION["login"] = true;
-        $_SESSION["newUser"] = true;
-        $_SESSION["name"] = $name;
+    $userDAO = new UserDAO();
 
-        $getUserID = "SELECT COUNT(user_id) AS num FROM user";
-        $result = $conn->query($getUserID);
+    $_SESSION["validPass"] = true;
+    $_SESSION["noBlanks"] = true;
+    $_SESSION["login"] = true;
+    $_SESSION["newUser"] = true;
+    $_SESSION["name"] = $name;
 
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-                $user_id = $row["num"] + 1; //OBTENEMOS EL USER_ID A PARTIR DEL 
-                                            //NUMERO DE USUARIOS REGISTRADOS
-                                            //(SUPONEMOS QUE NO BORRAMOS USUARIOS)
-            }
-        } 
-        
-        //VALORES A INSERTAR EN LA BBDD
-        $queryValues = 
-             "'".$user_id."'". "," 
-            ."'".$username."'". "," 
-            ."'".$passwd."'". "," 
-            ."'".$creationDate."'". ","
-            ."'".$name."'". ","
-            ."'".$imgPath."'". ","
-            ."'".$isPremium."'". ","
-            ."'".$type."'". ","
-            ."'".$img."'";
-
-        $registerUser= "INSERT INTO user VALUES(".$queryValues.");";
-
-        if ($conn->query($registerUser) === true) {
-            header("Location: /index.php");
-        } 
-        else {
-            $_SESSION["userInDB"] = true;
-            echo "Error: " . $registerUser . "<br>" . $conn->error;
-            header("Location: /register.php");
-        }
-    
-    $conn->close();
+    if ($userDAO->registerUser($conn, $username, $password, $creationDate, $name, $imgPath, $isPremium, $type, $img) === true) {
+        header("Location: /index.php");
+    } 
+    else {
+        $_SESSION["userInDB"] = true;
+        $_SESSION["login"] = false;
+        echo "Error: " . $registerUser . "<br>" . $conn->error;
+        header("Location: /register.php");
+    }
 }
 
 ?>
