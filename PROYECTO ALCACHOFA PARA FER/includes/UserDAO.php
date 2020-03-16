@@ -40,7 +40,7 @@ class UserDAO{
         return $result->num_rows > 0;
     }
 
-    public function loginUser($conn, $username, $password, $name, $img){
+    public function loginUser($conn, $username, $password){
         $loginUserQuery = "SELECT * FROM user WHERE username =" ."'".$username."'";
         $result = $conn->query($loginUserQuery);
 
