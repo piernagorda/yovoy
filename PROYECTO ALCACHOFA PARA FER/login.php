@@ -18,7 +18,7 @@
         <form method = "post" action="<?php echo htmlspecialchars("includes/loginSubmit.php");?>">
             <ul>
                 <li>Usuario <input type="text" name="username"/></li>
-                <li>Contraseña <input type="password" name="passwd"/></li>
+                <li>Contraseña <input type="password" name="password"/></li>
                 <li><input type="submit" value="Login"></li>
             </ul>
         </form>
