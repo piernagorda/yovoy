@@ -19,7 +19,7 @@
 		
 		<div id="usuario">
 			<?php
-				if(!isset($_SESSION["login"])){
+				if((isset($_SESSION["login"]) && !$_SESSION["login"]) || !isset($_SESSION["login"])){
 					echo "<ul>";
 					echo "<li><a href='register.php'>REGISTRARSE</a></li>";
 					echo "<li><a href='login.php'>LOGIN</a></li>";
