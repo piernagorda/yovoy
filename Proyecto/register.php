@@ -8,16 +8,18 @@
 </head>
 <body>
     <header>
+        <?php include 'includes/comun/cabecera.php' ?>
     </header>
 
     <div>
         <h1>REGISTRARSE</h1>
-        <form method="post" action="<?php echo htmlspecialchars("registerSubmit.php");?>">
+        <form method="post" action="<?php echo htmlspecialchars("includes/registerSubmit.php");?>">
             <ul>
                 <li>Usuario <input type="text" name="username"/></li>
-                <li>Contraseña <input type="password" name="passwd"/></li>
-                <li>Confirme contraseña <input type="password" name="passwdConfirm"/></li>
+                <li>Contraseña <input type="password" name="password"/></li>
+                <li>Confirme contraseña <input type="password" name="passwordConfirm"/></li>
                 <li>Nombre <input type="text" name="name"/></li>
+                <li>Foto <input type="file" accept =".png, .jpg, .jpeg" name="img"/></li>
                 <li><input type="submit" value="REGISTRARSE"/></li>
 
                 <?php 
@@ -44,6 +46,7 @@
     </div>
 
     <footer>
+        <?php include 'includes/comun/pie.php' ?>
     </footer>
 </body>
 </html>
