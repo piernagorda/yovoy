@@ -13,7 +13,7 @@ $userDAO = new UserDAO();
 
 //OBTENEMOS USUARIO Y CONTRASEÑA DESDE LA BASE DE DATOS
 if ($userDAO->userExists($conn, $username)) {
-    $user = $userDAO->loginUser($conn, $username, $password, $name, $img);
+    $user = $userDAO->loginUser($conn, $username, $password);
 } 
 
 //ERROR CUANDO EL USUARIO NO ESTÁ REGISTRADO
