@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>REGISTRO</title>
+    <title>Registro</title>
 </head>
 <body>
     <header>
