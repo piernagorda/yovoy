@@ -18,7 +18,7 @@ class User{
         $this->creationDate = $creationDate;
         $this->name = $name;
         $this->imgPath = $imgPath;
-        $this->isPremium = $type;
+        $this->isPremium = $isPremium;
         $this->type = $type;
         $this->img = $img;
     }
