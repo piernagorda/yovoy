@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2020 at 09:49 PM
+-- Generation Time: Mar 09, 2020 at 11:45 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -41,11 +41,24 @@ CREATE TABLE `event` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `joinevent`
+--
+
+CREATE TABLE `joinevent` (
+  `userId` int(11) NOT NULL,
+  `eventId` int(11) NOT NULL,
+  `joinDate` date NOT NULL,
+  `accepted` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `creationDate` date NOT NULL,
@@ -59,8 +72,9 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `password`, `creationDate`, `name`, `imgPath`, `isPremium`, `type`) VALUES
-(1, 'admin', 'yovoy', '2020-03-07', 'yovoy', NULL, 0, 1);
+INSERT INTO `user` (`userId`, `username`, `password`, `creationDate`, `name`, `imgPath`, `isPremium`, `type`) VALUES
+(1, 'admin', 'yovoy', '2020-03-07', 'yovoy', NULL, 0, 1),
+(2, '2', '2', '2020-03-09', 'ejemplo', '', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -74,10 +88,17 @@ ALTER TABLE `event`
   ADD KEY `createEvent` (`creator`);
 
 --
+-- Indexes for table `joinevent`
+--
+ALTER TABLE `joinevent`
+  ADD PRIMARY KEY (`userId`,`eventId`),
+  ADD KEY `eventId` (`eventId`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`),
+  ADD PRIMARY KEY (`userId`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
@@ -88,7 +109,14 @@ ALTER TABLE `user`
 -- Constraints for table `event`
 --
 ALTER TABLE `event`
-  ADD CONSTRAINT `createEvent` FOREIGN KEY (`creator`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `createEvent` FOREIGN KEY (`creator`) REFERENCES `user` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `joinevent`
+--
+ALTER TABLE `joinevent`
+  ADD CONSTRAINT `eventId` FOREIGN KEY (`eventId`) REFERENCES `event` (`eventId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
