@@ -33,7 +33,7 @@
 						//MENSAJE QUE SE MUESTRA A NUEVOS USUARIOS
 						if(isset($_SESSION["newUser"])){
 							if($_SESSION["newUser"]){
-								echo "<h1>AHORA ERES UN USUARIO REGISTRADO!</h1>";
+								echo "<h1>Ahora eres un usuario registrado!</h1>";
 							}
 						}   
 					}

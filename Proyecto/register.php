@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Registro</title>
+    <title>Registro - Yovoy</title>
 </head>
 <body>
     <header>
@@ -20,7 +20,8 @@
                 <li>Confirme contraseña <input type="password" name="passwordConfirm"/></li>
                 <li>Nombre <input type="text" name="name"/></li>
                 <li>Foto <input type="file" accept =".png, .jpg, .jpeg" name="img"/></li>
-                <li><input type="submit" value="REGISTRARSE"/></li>
+                <li><input type="submit" value="Registrarse"/></li>
+				<li><input type="reset" value="Borrar Campos"></li>
 
                 <?php 
                     if(isset($_SESSION["validPass"])){
