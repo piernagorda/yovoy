@@ -1,0 +1,63 @@
+ body {
+    background-image: url("includes/img/fondo.png");
+    background-size: cover;
+	color: #ffffff;
+    font-family: Ubuntu;
+}
+
+p {
+	font-family: Ubuntu;
+}
+
+h3 {
+	font-size: 54px; /* Hacemos la fuente del título pequeño super-grande */
+}
+
+em {
+	font-weight: bold; /* Ponemos en énfasis en negrita */
+}
+
+.tarjeta_naranja {
+  border-radius: 25px;
+  background: #FF8000;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
+  transition: all .2s ease-in-out;
+}
+
+.tarjeta_naranja:hover{
+    transform: scale(4);
+    background: blur(8px);
+}
+
+#usuario{
+   
+}
+
+#tarjeta_naranja_index{
+    
+}
+
+ul li{
+  display: inline;
+  list-style-type:none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  color: black;
+    text-decoration-color: black;
+}
+
+li a {
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #555;
+  color: white;
+}
+
