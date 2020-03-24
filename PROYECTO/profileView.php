@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <link href="estilos.css" rel="stylesheet" type="text/css" /> 
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
-    <title>Ver Perfil</title>
+    <title>Ver Perfil - YoVoY</title>
 </head>
 <body>
     <header>
@@ -16,6 +16,13 @@
     <div>
 		<?php
 			if(isset($_SESSION["login"]) && $_SESSION["login"]){
+				// foto
+				
+				// mostrar información
+				
+				// botón para editar perfil
+				
+				// botón para cambiar contraseña
 				
 			}
 		?>

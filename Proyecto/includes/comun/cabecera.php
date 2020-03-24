@@ -5,7 +5,7 @@
 		<div id="navbar">
 			<ul>
 				<!--logo aquí-->
-				<li><a href='index.php'>INICIO</a></li>
+				<li><a href='index.html'>INICIO</a></li>
 				<li><a href='feed.php'>FEED</a></li>
 				<li><a href='eventos.php'>EVENTOS</a></li>
 				<li><a href='buscar.php'>BUSCAR</a></li>
@@ -33,7 +33,7 @@
 						//MENSAJE QUE SE MUESTRA A NUEVOS USUARIOS
 						if(isset($_SESSION["newUser"])){
 							if($_SESSION["newUser"]){
-								echo "<h1>Ahora eres un usuario registrado!</h1>";
+								echo "<h1>AHORA ERES UN USUARIO REGISTRADO!</h1>";
 							}
 						}   
 					}

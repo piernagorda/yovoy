@@ -4,6 +4,8 @@
 <html>
 <head>
     <meta charset="utf-8" />
+     <link href="estilos.css" rel="stylesheet" type="text/css" /> 
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
     <title>PÁGINA DE INICIO</title>
 </head>
 <body>
