@@ -4,14 +4,14 @@ include_once('User.php');
 
 class UserDAO{
 
-    public function registerUser($conn, $email, $username, $password, $creationDate, $name, $imgName, $type){        
+    public function registerUser($conn, $username, $password, $creationDate, $name, $email, $imgName, $type){        
         //VALORES A INSERTAR EN LA BBDD
-        $queryValues = 
-             "'".$email."'". "," 
-            ."'".$username."'". "," 
+        $queryValues =  
+            "'".$username."'". "," 
             ."'".$password."'". "," 
             ."'".$creationDate."'". ","
             ."'".$name."'". ","
+			."'".$email."'". "," 
             ."'".$imgName."'". ","
             ."'".$type."'";
 
@@ -21,14 +21,14 @@ class UserDAO{
     }
 
     public function userExists($conn, $username){
-        $loginUserQuery = "SELECT username FROM user WHERE email =" ."'".$email."';";
+        $loginUserQuery = "SELECT username FROM user WHERE username = '".$username."';";
         $result = $conn->query($loginUserQuery);
 
         return $result->num_rows > 0;
     }
 
-    public function loginUser($conn, $username, $password){
-        $loginUserQuery = "SELECT * FROM user WHERE email =" ."'".$email."';";
+    public function getUser($conn, $username){
+        $loginUserQuery = "SELECT * FROM user WHERE username = '".$username."';";
         $result = $conn->query($loginUserQuery);
 
         while($row = $result->fetch_assoc()) {
@@ -36,18 +36,24 @@ class UserDAO{
             $username = $row["username"];
             $password = $row["password"];
             $creationDate = $row["creationDate"];
-            $imgName = $row["Name"];
+            $imgName = $row["imgName"];
             $name = $row["name"];
             $type = $row["type"];
         }
 
-        return new User($email, $username, $password, $creationDate, $name, $imgName, $type);
+        return new User($username, $password, $creationDate, $name, $email, $imgName, $type);
     }
 	
-	public function changeName($conn, $email, $name){
-		$changeNameQuery = "UPDATE user SET name = '" . $name . "' WHERE email = '" . $email . "';";
+	public function changeName($conn, $username, $name){
+		$changeNameQuery = "UPDATE user SET name = '" . $name . "' WHERE username = '" . $username . "';";
 		
 		return $conn->query($changeNameQuery);
+	}
+	
+	public function changeImg($conn, $username, $imgName){
+		$changeImgQuery = "UPDATE user SET imgName = '" . $imgName . "' WHERE username = '" . $username . "';";
+		
+		return $conn->query($changeImgQuery);
 	}
 }
 ?>

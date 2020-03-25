@@ -8,7 +8,7 @@ class MySQLConnection{
     public function __construct(){
         $DBServername="localhost";
         $DBUsername="root";
-        $DBPassword="root";
+        $DBPassword="";
         $DBName="yovoy_DB";
         
         $this->conn = new mysqli($DBServername, $DBUsername, $DBPassword, $DBName);

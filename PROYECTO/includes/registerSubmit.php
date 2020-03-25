@@ -5,11 +5,11 @@ include_once('UserDAO.php');
 session_start();
 
 //Valores introduciodos por el usuario
-$email = $_REQUEST["email"];
 $username = $_REQUEST["username"];
 $password = $_REQUEST["password"];
 $passwordConfirm = $_REQUEST["passwordConfirm"];
 $name = $_REQUEST["name"];
+$email = $_REQUEST["email"];
 $img = $_REQUEST["img"];
 
 //Valores por defecto
@@ -28,7 +28,7 @@ else if($password != $passwordConfirm){
     $_SESSION["noBlanks"] = true;
     $_SESSION["login"] = false;
     $_SESSION["newUser"] = false;
-    header("Location: /register.php");
+    header("Location: /Yovoy/Proyecto/register.php");
 }
 
 else { //INICIAMOS CONEXIÓN CON MYSQL
@@ -53,14 +53,14 @@ else { //INICIAMOS CONEXIÓN CON MYSQL
 		// Mover el foto al directorio de fotos de usuarios
 		if (move_uploaded_file($_FILES["img"]["tmp_name"], $targetFilePath)){
 			//Añadir el usuario a la BBDD
-			if ($userDAO->registerUser($conn, $email, $username, $password, $creationDate, $name, $imgName, $type) === true) {
+			if ($userDAO->registerUser($conn, $username, $password, $creationDate, $name, $email, $imgName, $type) === true) {
 				header("Location: /index.php");
 			} 
 			else {
 				$_SESSION["userInDB"] = true;
 				$_SESSION["login"] = false;
-				echo "Error: " . $registerUser . "<br>" . $conn->error;
-				header("Location: /register.php");
+				echo "Error: " . $registerUser . "<br>" . $conn->error; // Donde se define $registerUser?
+				header("Location: /Yovoy/Proyecto/register.php");
 			}
 		}
 		else{
@@ -72,14 +72,14 @@ else { //INICIAMOS CONEXIÓN CON MYSQL
 		$imgName = "default.jpg"
 		
 		//Añadir el usuario a la BBDD
-		if ($userDAO->registerUser($conn, $email, $username, $password, $creationDate, $name, $imgName, $type) === true) {
+		if ($userDAO->registerUser($conn, $username, $password, $creationDate, $name, $email, $imgName, $type) === true) {
 			header("Location: /index.php");
 		} 
 		else {
 			$_SESSION["userInDB"] = true;
 			$_SESSION["login"] = false;
 			echo "Error: " . $registerUser . "<br>" . $conn->error;
-			header("Location: /register.php");
+			header("Location: /Yovoy/Proyecto/register.php");
 		}
 	}
 }

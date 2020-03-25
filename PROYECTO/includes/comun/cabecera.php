@@ -1,3 +1,10 @@
+<?php 
+include_once('includes/MySQLConnection.php');
+include_once('includes/UserDAO.php');
+include_once('includes/User.php');
+session_start(); 
+?>
+
 <!DOCTYPE html>
 <html>
     <body>
@@ -11,7 +18,7 @@
 				<li><a href='buscar.php'>BUSCAR</a></li>
 				<li><a href='calendario.php'>CALENDARIO</a></li>
 				<li><a href='amigos.php'>MIS AMIGOS</a></li>
-				<li><a href='area.php'>MI ÁREA</a></li>
+				<li><a href='profileView.php'>MI ÁREA</a></li>
 			</ul>
 		</div>
 		
@@ -26,8 +33,21 @@
 				else{
 					//foto si hay
 					if($_SESSION["login"]){
-						echo "<p>Hola, " . $_SESSION["name"]. "!</p>";
+						$mysql = new MySQLConnection();
+						$conn = $mysql->connect(); 
+						$userDAO = new UserDAO();
+						
+						$user = $userDAO->getUser($conn, $_SESSION["username"]);
+						$imgDir = "includes/img/usuarios/";
+						$imgName = $user->getImgName();
+						$imgPath = $imgDir . $imgName;
+						$name = $user->getName();
+						
+						echo "<img src='" . $imgPath . "' alt='usuario' height='50' width='50'>";
+						echo "<p>Hola, " . $name . "!</p>";
 						echo "<a href='includes/logout.php'>Cerrar sesión</a>";
+						if (isset($_SESSION["check"]))
+							echo "<p>nice</p>";
 						
 
 						//MENSAJE QUE SE MUESTRA A NUEVOS USUARIOS

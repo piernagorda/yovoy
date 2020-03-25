@@ -1,12 +1,10 @@
-<?php session_start(); ?>
-
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
     <link href="estilos.css" rel="stylesheet" type="text/css" /> 
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
-	<title>Login ' YoVoy</title>
+	<title>Login - YoVoy</title>
 </head>
 
 <body>

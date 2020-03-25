@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2020 at 11:45 AM
+-- Generation Time: Mar 25, 2020 at 03:53 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -30,8 +30,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `event` (
   `eventId` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `creator` int(11) NOT NULL,
+  `name` int(11) NOT NULL,
+  `creator` varchar(20) NOT NULL,
   `creationDate` date NOT NULL,
   `eventDate` date NOT NULL,
   `capacity` int(11) NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE `event` (
 --
 
 CREATE TABLE `joinevent` (
-  `userId` int(11) NOT NULL,
+  `username` varchar(20) NOT NULL,
   `eventId` int(11) NOT NULL,
   `joinDate` date NOT NULL,
   `accepted` tinyint(1) NOT NULL
@@ -58,23 +58,22 @@ CREATE TABLE `joinevent` (
 --
 
 CREATE TABLE `user` (
-  `userId` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `creationDate` date NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `imgPath` varchar(30) DEFAULT NULL,
-  `isPremium` tinyint(1) NOT NULL,
-  `type` int(11) NOT NULL
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `imgName` varchar(30) NOT NULL DEFAULT 'default',
+  `type` int(1) NOT NULL COMMENT '0: Admin; 1: Usuario Regular; 2: Usuario Premium'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userId`, `username`, `password`, `creationDate`, `name`, `imgPath`, `isPremium`, `type`) VALUES
-(1, 'admin', 'yovoy', '2020-03-07', 'yovoy', NULL, 0, 1),
-(2, '2', '2', '2020-03-09', 'ejemplo', '', 0, 0);
+INSERT INTO `user` (`username`, `password`, `creationDate`, `name`, `email`, `imgName`, `type`) VALUES
+('2', '2', '2020-03-09', 'Ejemplo', 'ejemplo@gmail.com', 'default', 1),
+('admin', 'yovoy', '2020-03-07', 'Admin', 'admin@yovoy.com', 'default', 0);
 
 --
 -- Indexes for dumped tables
@@ -84,39 +83,32 @@ INSERT INTO `user` (`userId`, `username`, `password`, `creationDate`, `name`, `i
 -- Indexes for table `event`
 --
 ALTER TABLE `event`
-  ADD PRIMARY KEY (`eventId`),
-  ADD KEY `createEvent` (`creator`);
+  ADD PRIMARY KEY (`eventId`);
 
 --
 -- Indexes for table `joinevent`
 --
 ALTER TABLE `joinevent`
-  ADD PRIMARY KEY (`userId`,`eventId`),
-  ADD KEY `eventId` (`eventId`);
+  ADD PRIMARY KEY (`eventId`,`username`) USING BTREE,
+  ADD KEY `FOREIGN (USER)` (`username`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`userId`),
-  ADD UNIQUE KEY `username` (`username`);
+  ADD PRIMARY KEY (`username`) USING BTREE,
+  ADD UNIQUE KEY `UNIQUE` (`email`);
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `event`
---
-ALTER TABLE `event`
-  ADD CONSTRAINT `createEvent` FOREIGN KEY (`creator`) REFERENCES `user` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `joinevent`
 --
 ALTER TABLE `joinevent`
-  ADD CONSTRAINT `eventId` FOREIGN KEY (`eventId`) REFERENCES `event` (`eventId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FOREIGN (EVENT)` FOREIGN KEY (`eventId`) REFERENCES `event` (`eventId`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `FOREIGN (USER)` FOREIGN KEY (`username`) REFERENCES `user` (`username`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
