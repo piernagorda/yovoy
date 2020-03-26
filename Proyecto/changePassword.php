@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
     <link href="estilos.css" rel="stylesheet" type="text/css" /> 
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
-	<title>Editar Perfil - YoVoy</title>
+	<title>Cambiar Contraseña - YoVoy</title>
 </head>
 
 <body>
@@ -15,19 +15,21 @@
     <div>
         <h1>Login de usuario</h1> 
 
-        <form method = "post" action="<?php echo htmlspecialchars("includes/editProfileSubmit.php");?>" enctype="multipart/form-data">
+        <form method = "post" action="<?php echo htmlspecialchars("includes/changePasswordSubmit.php");?>">
             <ul>
-                <li>Nombre <input type="text" name="name"/></li>
-                <li>Foto <input type="file" accept =".png, .jpg, .jpeg" name="img"/></li>
+                <li>Contraseña actual <input type="password" name="currPass"/></li>
+                <li>Confirme contraseña actual <input type="password" name="currPassConfirm"/></li>
+				<li>Contraseña nueva <input type="password" name="newPass"/></li>
+                <li>Confirme contraseña nueva <input type="password" name="newPassConfirm"/></li>
                 <li><input type="submit" value="Confirmar"></li>
 				<li><input type="reset" value="Borrar Campos"></li>
             </ul>
         </form>
 		
 		<?php
-			if (isset($_SESSION["editProfileStatus"])){
-				echo "<p>" . $_SESSION["editProfileStatus"] . "</p>";
-				unset($_SESSION["editProfileStatus"]);
+			if (isset($_SESSION["changePassStatus"])){
+				echo "<p>" . $_SESSION["changePassStatus"] . "</p>";
+				unset($_SESSION["changePassStatus"]);
 			}
 		?>
     </div>

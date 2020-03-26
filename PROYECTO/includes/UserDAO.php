@@ -55,5 +55,11 @@ class UserDAO{
 		
 		return $conn->query($changeImgQuery);
 	}
+	
+	public function changePassword($conn, $username, $newPass){
+		$changePassQuery = "UPDATE user SET password = '" . $newPass . "' WHERE username = '" . $username . "';";
+		
+		return $conn->query($changePassQuery);
+	}
 }
 ?>

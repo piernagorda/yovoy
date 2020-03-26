@@ -46,8 +46,7 @@ session_start();
 						echo "<img src='" . $imgPath . "' alt='usuario' height='50' width='50'>";
 						echo "<p>Hola, " . $name . "!</p>";
 						echo "<a href='includes/logout.php'>Cerrar sesión</a>";
-						if (isset($_SESSION["check"]))
-							echo "<p>nice</p>";
+						echo "<p>" . $_SESSION["check"] . "</p>";
 						
 
 						//MENSAJE QUE SE MUESTRA A NUEVOS USUARIOS

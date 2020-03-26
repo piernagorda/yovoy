@@ -42,7 +42,7 @@ else { //INICIAMOS CONEXIÓN CON MYSQL
     $_SESSION["noBlanks"] = true;
     $_SESSION["login"] = true;
     $_SESSION["newUser"] = true;
-    $_SESSION["name"] = $name;
+    $_SESSION["usernamename"] = $username;
 	
 	// Si hay un foto subido por el usuario
 	if (isset($_FILES["img"])){
@@ -54,12 +54,12 @@ else { //INICIAMOS CONEXIÓN CON MYSQL
 		if (move_uploaded_file($_FILES["img"]["tmp_name"], $targetFilePath)){
 			//Añadir el usuario a la BBDD
 			if ($userDAO->registerUser($conn, $username, $password, $creationDate, $name, $email, $imgName, $type) === true) {
-				header("Location: /index.php");
+				header("Location: /Yovoy/Proyecto/inicio.php");
 			} 
 			else {
 				$_SESSION["userInDB"] = true;
 				$_SESSION["login"] = false;
-				echo "Error: " . $registerUser . "<br>" . $conn->error; // Donde se define $registerUser?
+				echo "Error: " . $conn->error; // Donde se define $registerUser?
 				header("Location: /Yovoy/Proyecto/register.php");
 			}
 		}
@@ -73,12 +73,12 @@ else { //INICIAMOS CONEXIÓN CON MYSQL
 		
 		//Añadir el usuario a la BBDD
 		if ($userDAO->registerUser($conn, $username, $password, $creationDate, $name, $email, $imgName, $type) === true) {
-			header("Location: /index.php");
+			header("Location: /Yovoy/Proyecto/inicio.php");
 		} 
 		else {
 			$_SESSION["userInDB"] = true;
 			$_SESSION["login"] = false;
-			echo "Error: " . $registerUser . "<br>" . $conn->error;
+			echo "Error: " . $conn->error;
 			header("Location: /Yovoy/Proyecto/register.php");
 		}
 	}
